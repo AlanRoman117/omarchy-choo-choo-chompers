@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "alanroman.choo-choo-chompers",
   "name": "Choo-Choo Chompers",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": "Alan Roman",
   "license": "MIT",
   "description": "A gentle, toddler-friendly train-kitchen game. Plays fully offline.",

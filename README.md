@@ -7,6 +7,12 @@ order is a joke, not an error.
 
 The whole game is bundled here and **plays fully offline**.
 
+<p align="center">
+  <img src="screenshots/title.png" width="240" alt="Title screen: the duck train on its track, with four duckling chefs to pick from and a chapter selector">
+  <img src="screenshots/kitchen.png" width="240" alt="The kitchen: three customers' order tickets at the top, food stations below, and a duckling chef fetching milk">
+  <img src="screenshots/silly-order.png" width="240" alt="A silly order: the bunny customer says 'An extra Lettuce? For ME? Hee hee!' and still earns a star">
+</p>
+
 ## Install
 
 Run this in a terminal:
@@ -72,6 +78,7 @@ Omarchy plugins run unsandboxed inside `omarchy-shell`, so here is all of it:
   open, it focuses that window instead of opening another.
 - `game/` is the game itself. It runs inside the browser's sandbox, and
   `game.js` is left unminified so updates show a readable diff.
+- `screenshots/` holds only the images on this page; nothing loads them.
 
 Nothing is downloaded or sent anywhere. `game/index.html` also carries a
 Content-Security-Policy that blocks all network requests, remote images and
