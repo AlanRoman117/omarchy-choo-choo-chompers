@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; img-src 'self' data: blob:; media-src data: blob:; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" content="#2c4770" />
+    <link rel="icon" href="./favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <!-- Filled in from src/brand.ts by the brand plugin in vite.config.ts -->
+    <meta name="description" content="Choo-Choo Chompers — Duck brothers deliver dinner by train." />
+    <title>Choo-Choo Chompers</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        background: #2c4770;
+        /* Kids will mash the screen. Kill every browser gesture we can. */
+        overscroll-behavior: none;
+        touch-action: manipulation;
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        font-family: "Baloo 2", "Comic Sans MS", "Trebuchet MS", system-ui, sans-serif;
+      }
+      #game {
+        width: 100%;
+        height: 100%;
+      }
+      #game canvas {
+        display: block;
+      }
+      /* Shown until Phaser boots; hidden by main.ts */
+      #loading {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-content: center;
+        gap: 12px;
+        justify-items: center;
+        color: #ffe9b8;
+        font-size: 20px;
+        letter-spacing: 0.04em;
+        pointer-events: none;
+      }
+      #loading .puff {
+        font-size: 56px;
+        animation: chug 1.1s ease-in-out infinite;
+      }
+      @keyframes chug {
+        0%,
+        100% {
+          transform: translateY(0) rotate(-2deg);
+        }
+        50% {
+          transform: translateY(-10px) rotate(2deg);
+        }
+      }
+    </style>
+    <script defer src="./game.js"></script>
+  </head>
+  <body>
+    <div id="game"></div>
+    <div id="loading">
+      <div class="puff">🚂</div>
+      <div>Warming up the grill…</div>
+    </div>
+  </body>
+</html>

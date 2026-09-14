@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "alanroman.choo-choo-chompers",
+  "name": "Choo-Choo Chompers",
+  "version": "0.3.0",
+  "author": "Alan Roman",
+  "license": "MIT",
+  "description": "A gentle, toddler-friendly train-kitchen game. Plays fully offline.",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Choo-Choo Chompers",
+    "description": "Launches Choo-Choo Chompers",
+    "category": "Games",
+    "allowMultiple": false,
+    "defaultSection": "right"
+  }
+}
