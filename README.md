@@ -13,6 +13,20 @@ The whole game is bundled here and **plays fully offline**.
   <img src="screenshots/silly-order.png" width="240" alt="A silly order: the bunny customer says 'An extra Lettuce? For ME? Hee hee!' and still earns a star">
 </p>
 
+## Requirements
+
+- **Omarchy 4** (Quattro).
+- **A Chromium-based browser.** The game opens through Omarchy's
+  `omarchy-launch-webapp`, which uses your default browser if it's Chrome,
+  Brave, Edge, Opera, Vivaldi or Helium, and Chromium otherwise.
+- **Optional:** `hyprctl` and `jq`, both part of Omarchy. They let a second
+  click focus the open game instead of opening another window. Without them,
+  the game still opens.
+
+Nothing else is needed: no extra packages, no administrator access, no background services. The
+game's code is bundled in `game/`, including Phaser and its one dependency (see
+[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)).
+
 ## Install
 
 Run this in a terminal:
@@ -76,9 +90,17 @@ Omarchy plugins run unsandboxed inside `omarchy-shell`, so here is all of it:
 - `launch.sh` (a short shell script) opens `game/index.html` with
   `omarchy-launch-webapp`, as a Chromium app window. If the game is already
   open, it focuses that window instead of opening another.
-- `game/` is the game itself. It runs inside the browser's sandbox, and
-  `game.js` is left unminified so updates show a readable diff.
-- `screenshots/` holds only the images on this page; nothing loads them.
+- `game/` is the game itself, and it runs inside the browser's sandbox:
+  - `index.html` is the page.
+  - `loader.js` (about 30 lines) wires the other scripts together.
+  - `game.js` is the game.
+  - `vendor-*.js` is Phaser, the game engine.
+
+  Whitespace is stripped but every name is kept, so an update's diff still
+  shows what changed. It's split into files under 512 KiB so the Omarchy plugin
+  marketplace's security scan can read all of it.
+- `screenshots/` and `preview.png` are only the images for this page and the
+  marketplace listing; nothing loads them.
 
 Nothing is downloaded or sent anywhere. `game/index.html` also carries a
 Content-Security-Policy that blocks all network requests, remote images and
@@ -91,7 +113,7 @@ it's still a browser: keyboard shortcuts such as Ctrl+N can open an ordinary
 browser window, and Super-key shortcuts can close or move the game. That
 browser uses the game's own profile, so it has none of your logins, history or
 tabs. But if Wi-Fi is on, it can reach the web. For young children, turn Wi-Fi
-off (see below), and stay nearby.
+off (see *Wi-Fi* above), and stay nearby.
 
 ## Saves
 
@@ -131,5 +153,9 @@ command after a `&&`.
 
 ## License
 
-MIT. Everything that runs is in this repo: `BarWidget.qml`, `launch.sh`, and
-the unminified game in `game/`.
+MIT (see [`LICENSE`](LICENSE)). Everything that runs is in this repo:
+`BarWidget.qml`, `launch.sh`, and the game in `game/`.
+
+The game is built with [Phaser](https://phaser.io) (MIT, © Phaser Studio Inc.),
+which uses [EventEmitter3](https://github.com/primus/eventemitter3) (MIT). Their
+license texts are in [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
